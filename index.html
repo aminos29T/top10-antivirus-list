@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Antivirus 2026</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --bg: #f4f7f6;
+            --text: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-container {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent);
+        }
+
+        .antivirus-card {
+            background: var(--white);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .antivirus-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .rank {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-right: 1.5rem;
+            min-width: 50px;
+        }
+
+        .info h2 {
+            margin: 0 0 0.5rem 0;
+            color: var(--primary);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #01579b;
+            padding: 2px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>I Migliori 10 Antivirus del 2026</h1>
+    <p>Proteggi il tuo PC con le soluzioni più efficaci sul mercato</p>
+</header>
+
+<div class="container">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cerca un antivirus..." onkeyup="filterList()">
+    </div>
+
+    <div id="antivirusList"></div>
+</div>
+
+<footer>
+    &copy; 2026 Guida Sicurezza Informatica - Nessuna API utilizzata.
+</footer>
+
+<script>
+    const softwareData = [
+        { name: "Bitdefender", desc: "Eccellente rilevamento malware e impatto minimo sulle prestazioni.", feature: "Protezione Multi-livello" },
+        { name: "Norton 360", desc: "Suite completa con VPN inclusa e backup nel cloud.", feature: "Sicurezza All-in-one" },
+        { name: "Kaspersky", desc: "Interfaccia intuitiva e motori di scansione tra i più veloci.", feature: "Safe Money" },
+        { name: "McAfee Total Protection", desc: "Ottimo per le famiglie, protegge un numero illimitato di dispositivi.", feature: "Protezione Identità" },
+        { name: "ESET NOD32", desc: "Leggerissimo, ideale per i videogiocatori e PC meno recenti.", feature: "Basso consumo risorse" },
+        { name: "Avast Premium", desc: "Ottima versione gratuita e protezione Wi-Fi avanzata.", feature: "Ispezione Rete" },
+        { name: "Trend Micro", desc: "Specializzato nella protezione contro il phishing e siti malevoli.", feature: "AI Avanzata" },
+        { name: "Avira Prime", desc: "Il miglior motore di scansione tedesco con tool di ottimizzazione.", feature: "Privacy Digitale" },
+        { name: "Sophos Home", desc: "Gestione centralizzata via web, perfetto per il lavoro da remoto.", feature: "Parental Control" },
+        { name: "Malwarebytes", desc: "Imbattibile nella rimozione di malware già insediati nel sistema.", feature: "Rimozione Zero-Day" }
+    ];
+
+    function loadAntivirus() {
+        const listContainer = document.getElementById('antivirusList');
+        listContainer.innerHTML = softwareData.map((soft, index) => `
+            <div class="antivirus-card">
+                <div class="rank">#${index + 1}</div>
+                <div class="info">
+                    <h2>${soft.name}</h2>
+                    <p>${soft.desc}</p>
+                    <span class="badge">${soft.feature}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function filterList() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const cards = document.getElementsByClassName('antivirus-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            const title = cards[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+            cards[i].style.display = title.includes(input) ? "" : "none";
+        }
+    }
+
+    window.onload = loadAntivirus;
+</script>
+
+</body>
+</html>
